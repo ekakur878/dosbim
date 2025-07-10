@@ -1,33 +1,121 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profilepage extends StatelessWidget {
-  const Profilepage({Key? key}) : super(key: key);
+  const Profilepage({super.key});
+
+  Future<void> _logout(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    await prefs.setBool('isLoggedIn', false);
+
+    Navigator.pushReplacementNamed(context, '/login');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('Profile'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/images/profile.png'),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Nama Mahasiswa',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            const Text('NIM: 1234567890'),
-          ],
+      backgroundColor: const Color(0xFFF1F6FA),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: const Text('Profil Mahasiswa'),
+      //   centerTitle: true,
+      //   backgroundColor: const Color(0xFF2193b0),
+      //   elevation: 2,
+      // ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(height: 40),
+              CircleAvatar(
+                radius: 60,
+                backgroundImage: const AssetImage('assets/images/Person.jpg'),
+                backgroundColor: Colors.grey[300],
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Nama Mahasiswa',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'NIM: 1234567890',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+              const SizedBox(height: 32),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 16.0,
+                  ),
+                  child: Column(
+                    children: const [
+                      ProfileInfoRow(
+                        label: 'Program Studi',
+                        value: 'Teknik Informatika',
+                      ),
+                      Divider(),
+                      ProfileInfoRow(label: 'Fakultas', value: 'Ilmu Komputer'),
+                      Divider(),
+                      ProfileInfoRow(label: 'Angkatan', value: '2021'),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF2193b0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+                icon: const Icon(Icons.logout, color: Colors.white),
+                label: const Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed:
+                    () // Tambahkan fungsi logout jika ingin
+                    => _logout(context),
+              ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class ProfileInfoRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const ProfileInfoRow({super.key, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        Text(value, style: const TextStyle(fontSize: 16)),
+      ],
     );
   }
 }
