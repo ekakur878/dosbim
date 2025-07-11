@@ -102,14 +102,14 @@ class _NilaipageState extends State<Nilaipage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(
+                              headingRowColor: WidgetStateProperty.all(
                                 const Color(0xFF6dd5ed),
                               ),
                               headingTextStyle: const TextStyle(

@@ -70,7 +70,9 @@ class _LoginPageState extends State<LoginPage> {
                         color: Color(0xFF2193b0),
                       ),
                     ),
-                    const SizedBox(height: 100),
+                    const SizedBox(height: 20),
+                    Image.asset('assets/images/Untag.png'),
+                    const SizedBox(height: 20),
                     TextField(
                       controller: _usernameController,
                       decoration: const InputDecoration(

@@ -101,22 +101,22 @@ class _JadwalState extends State<Jadwal> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: DataTable(
-                              headingRowColor: MaterialStateProperty.all(
+                              headingRowColor: WidgetStateProperty.all(
                                 const Color(0xFF6dd5ed),
                               ),
                               headingTextStyle: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
+                                fontSize: 12,
                               ),
-                              dataTextStyle: const TextStyle(fontSize: 10),
+                              dataTextStyle: const TextStyle(fontSize: 12),
                               columns: _filteredData[0]
                                   .map(
                                     (header) => DataColumn(label: Text(header)),
