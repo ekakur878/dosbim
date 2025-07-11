@@ -65,13 +65,7 @@ class _JadwalState extends State<Jadwal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Jadwal Kuliah'),
-      //   centerTitle: true,
-      //   backgroundColor: const Color(0xFF2193b0),
-      //   elevation: 2,
-      // ),
-      backgroundColor: const Color(0xFFF1F6FA),
+      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
       body: _filteredData.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : Padding(

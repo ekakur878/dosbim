@@ -15,83 +15,84 @@ class Profilepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F6FA),
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   title: const Text('Profil Mahasiswa'),
-      //   centerTitle: true,
-      //   backgroundColor: const Color(0xFF2193b0),
-      //   elevation: 2,
-      // ),
+      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              CircleAvatar(
-                radius: 60,
-                backgroundImage: const AssetImage('assets/images/Person.jpg'),
-                backgroundColor: Colors.grey[300],
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Nama Mahasiswa',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                'NIM: 1234567890',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-              const SizedBox(height: 32),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: const AssetImage('assets/images/Person.jpg'),
+                  backgroundColor: Colors.grey[300],
                 ),
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0,
-                    vertical: 16.0,
-                  ),
-                  child: Column(
-                    children: const [
-                      ProfileInfoRow(
-                        label: 'Program Studi',
-                        value: 'Teknik Informatika',
-                      ),
-                      Divider(),
-                      ProfileInfoRow(label: 'Fakultas', value: 'Ilmu Komputer'),
-                      Divider(),
-                      ProfileInfoRow(label: 'Angkatan', value: '2021'),
-                    ],
-                  ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Nama Mahasiswa',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF2193b0),
+                const SizedBox(height: 8),
+                const Text(
+                  'NIM: 1234567890',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
+                const SizedBox(height: 32),
+                Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 12,
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 16.0,
+                    ),
+                    child: Column(
+                      children: const [
+                        ProfileInfoRow(
+                          label: 'Tempat / Tanggal Lahir',
+                          value: 'Gresik, 24 Agustus 1999',
+                        ),
+                        Divider(),
+                        ProfileInfoRow(label: 'IPK', value: '3.6'),
+                        Divider(),
+                        ProfileInfoRow(
+                          label: 'Program Studi',
+                          value: 'Teknik Informatika',
+                        ),
+                        Divider(),
+
+                        ProfileInfoRow(label: 'Angkatan', value: '2021'),
+                      ],
+                    ),
                   ),
                 ),
-                icon: const Icon(Icons.logout, color: Colors.white),
-                label: const Text(
-                  'Logout',
-                  style: TextStyle(color: Colors.white),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                    ),
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                    label: const Text(
+                      'Logout',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed:
+                        () // Tambahkan fungsi logout jika ingin
+                        => _logout(context),
+                  ),
                 ),
-                onPressed:
-                    () // Tambahkan fungsi logout jika ingin
-                    => _logout(context),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

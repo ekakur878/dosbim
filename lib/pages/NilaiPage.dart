@@ -67,12 +67,7 @@ class _NilaipageState extends State<Nilaipage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Tabel Nilai Mahasiswa'),
-      //   centerTitle: true,
-      //   backgroundColor: const Color(0xFF2193b0),
-      // ),
-      backgroundColor: const Color(0xFFF1F6FA),
+      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
       body: _filteredData.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : Padding(

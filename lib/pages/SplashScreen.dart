@@ -39,7 +39,7 @@ class _SplashscreenState extends State<Splashscreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/Untag.png', width: 100, height: 100),
+              Image.asset('assets/images/Untag.png', width: 300, height: 300),
               const SizedBox(height: 20),
               const Text(
                 'Welcome to MyApp',
